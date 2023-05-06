@@ -1,0 +1,20 @@
+html,
+body {
+    /* width: 100px; */
+    margin: 8px;
+}
+
+#popup_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center
+}
+
+#px_input {
+    width: 25px;
+    text-align: center;
+    margin-bottom: 10px;
+    outline: none;
+}
