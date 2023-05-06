@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Scroll by PX",
+    "version": "1.0",
+    "description": "Scroll the page by specified px.",
+    "homepage_url": "https://github.com/chho/scroll_px_extension",
+    "icons": {
+        "48": "icons/px_icon_48.png",
+        "96": "icons/px_icon_96.png"
+    },
+    "browser_action": {
+        "default_icon": "icons/px_icon_32.png",
+        "default_title": "Scroll by PX",
+        "default_popup": "popup/scroll_px.html"
+    }
+}
