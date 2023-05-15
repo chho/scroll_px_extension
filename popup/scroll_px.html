@@ -7,14 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <link rel="stylesheet" href="scroll_px.css">
+  <script defer src="scroll_px.js"></script>
 </head>
 
 <body>
   <div id="popup_content">
-    <input id="px_input" type="text" placeholder="px" />
+    <input id="px_input" type="number" placeholder="px" min="1" />
     <div id="icon_bar">
-      <button>arrow icon</button>
+      <button id="arrow_btn">arrow icon</button>
+      <button id="arrow_close_btn">arrow close</button>
     </div>
+    <div id="px_output"></div>
   </div>
 </body>
 
