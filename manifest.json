@@ -8,6 +8,9 @@
         "48": "icons/px_icon_48.png",
         "96": "icons/px_icon_96.png"
     },
+    "permissions": [
+        "activeTab"
+    ],
     "browser_action": {
         "default_icon": "icons/px_icon_32.png",
         "default_title": "Scroll by PX",
