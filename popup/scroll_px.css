@@ -1,3 +1,7 @@
+:root {
+    --active_color: rgb(80, 177, 206);
+}
+
 html,
 body {
     /* width: 100px; */
@@ -17,4 +21,18 @@ body {
     text-align: center;
     margin-bottom: 10px;
     outline: none;
+}
+
+#arrow_btn {
+    width: 30px;
+}
+
+#arrow_btn:hover {
+    cursor: pointer;
+    fill: var(--active_color);
+}
+
+#arrow_btn:active {
+    fill: var(--active_color);
+    transform: translateY(2px);
 }
