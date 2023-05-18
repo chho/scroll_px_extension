@@ -12,12 +12,15 @@
 
 <body>
   <div id="popup_content">
-    <input id="px_input" type="number" placeholder="px" min="1" />
+    <input id="px_input" type="number" placeholder="px" min="1">
     <div id="icon_bar">
-      <svg viewBox="0 0 100 100" id="arrow_btn">
-        <use xlink:href="arrow_icon.svg#keyboard-arrow"></use>
-      </svg>
-      <!-- <img id="arrow_btn" src="arrow_icon.svg" alt="keyboard arrow icon" /> -->
+      <label class="switch">
+        <input type="checkbox">
+        <svg viewBox="0 0 100 100" id="arrow_btn">
+          <use xlink:href="arrow_icon.svg#keyboard-arrow"></use>
+        </svg>
+        <!-- <img id="arrow_btn" src="arrow_icon.svg" alt="keyboard arrow icon" /> -->
+      </label>
       <!-- <button id="arrow_btn">arrow icon</button>
       <button id="arrow_close_btn">arrow close</button> -->
     </div>
