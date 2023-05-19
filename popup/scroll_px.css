@@ -2,6 +2,7 @@
     --active_color: rgb(80, 177, 206);
 }
 
+/* popup page settings */
 html,
 body {
     width: 120px;
@@ -9,6 +10,7 @@ body {
     padding: 0;
 }
 
+/* popup page align settings */
 #popup_content {
     display: flex;
     flex-direction: column;
@@ -25,6 +27,7 @@ body {
     justify-content: center;
 }
 
+/* px value box settings */
 #px_input {
     width: 60px;
     text-align: center;
@@ -35,25 +38,6 @@ body {
 #arrow_btn {
     width: 30px;
     cursor: pointer;
-
-    /* position: absolute;
-    top: 0;
-    left: 0; */
-}
-
-#arrow_btn:active {
-    fill: var(--active_color);
-    transform: translateY(2px);
-}
-
-.switch {
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-
-
-    /* position: relative;
-    display: inline-block; */
 }
 
 .switch input {
@@ -64,8 +48,5 @@ body {
 }
 
 .switch input:checked+#arrow_btn {
-    /* opacity: 0;
-    width: 0;
-    height: 0; */
     fill: var(--active_color);
 }
