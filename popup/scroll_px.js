@@ -1,5 +1,48 @@
-// default px value.
+// default 2px.
 const DEFAULT_PX = 2;
+
+initialize();
+
+// initialize the popup window.
+// load data from the locally storage to the popup window.
+function initialize() {
+    console.log("initialize");
+
+    // todo: clean up all the locally storage data that is not today.
+    // browser.storage.local.clear();
+
+    browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
+        console.log("tabs: " + tabs[0].id);
+        console.log("tabs type: " + typeof tabs[0].id);
+
+        browser.storage.local.get(tabs[0].id.toString()).then((result) => {
+            let keys = Object.keys(result);
+
+            if (keys.length >= 1) {
+                let px_value = result[keys[0]];
+                console.log("px_value: " + px_value);
+
+                if (px_value) {
+                    document.getElementById("px_input").value = px_value;
+                    document.getElementById("arrow_chb").checked = true;
+                }
+            }
+            console.log("result: " + result);
+            console.log("keys: " + Object.keys(result));
+        });
+    });
+
+    // browser.storage.local.get(null).then((result) => {
+    //     let keys = Object.keys(result);
+
+    //     console.log("key: " + keys);
+
+    //     for (let key of keys) {
+    //         console.log("key: " + key);
+    //         console.log("value: " + result[key]);
+    //     }
+    // });
+}
 
 // add click listener to the arrow button.
 function listenArrowBtn() {
@@ -27,12 +70,21 @@ function listenArrowBtn() {
             document.getElementById("px_output").innerHTML = px_value;
 
             browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
-                browser.tabs.sendMessage(tabs[0].id, { px: px_value });
+                let id = tabs[0].id;
+
+                let storing_px = browser.storage.local.set({ [id]: px_value });
+                storing_px.then(() => {
+                    browser.tabs.sendMessage(id, { px: px_value });
+                });
             });
         } else {
             // -1 is the magic number. It means that the arrow button is disabled.
             browser.tabs.query({ active: true, currentWindow: true }).then((tabs) => {
-                browser.tabs.sendMessage(tabs[0].id, { px: -1 });
+                browser.storage.local.remove(tabs[0].id.toString()).then(() => {
+                    console.log("remove the px value from the local storage.");
+
+                    browser.tabs.sendMessage(tabs[0].id, { px: -1 });
+                });
             });
         }
     });

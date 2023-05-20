@@ -28,6 +28,9 @@
 
             // document.getElementsByTagName("body")[0].removeEventListener("keydown", window.aa);
             // document.getElementsByTagName("body")[0].replaceWith(document.getElementsByTagName("body")[0].cloneNode(true));
+
+            console.log("abort the key listener");
+
             window.controller.abort();
 
             // if (keyListener) {
@@ -36,10 +39,16 @@
             //     keyListener.remove();
             // }
         } else {
-            // set the keydown listner
-            body_el.addEventListener("keydown", (e) => {
-                window.controller = new AbortController();
+            console.log("signal is " + window.controller.signal.aborted);
 
+            if (window.controller.signal.aborted) {
+                console.log("new controller");
+
+                window.controller = new AbortController();
+            }
+
+            // set the keydown listner.
+            body_el.addEventListener("keydown", (e) => {
                 console.log("enter the key listener");
 
                 if (e.key === "ArrowDown") {
@@ -49,7 +58,6 @@
                     window.scrollBy(0, message.px);
                 }
             }, { signal: window.controller.signal });
-            // document.getElementsByTagName("body")[0].addEventListener("keydown", window.aa);
         }
 
         // console.log(message.px);
