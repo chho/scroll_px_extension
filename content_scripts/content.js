@@ -51,12 +51,28 @@
             body_el.addEventListener("keydown", (e) => {
                 console.log("enter the key listener");
 
-                if (e.key === "ArrowDown") {
+                if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+                    let x, y = 0;
+
+                    switch (e.key) {
+                        case "ArrowUp": y = -message.px; break;
+                        case "ArrowDown": y = message.px; break;
+                        case "ArrowLeft": x = -message.px; break;
+                        case "ArrowRight": x = message.px; break;
+                    }
+
                     e.preventDefault();
 
                     console.log(message.px);
-                    window.scrollBy(0, message.px);
+                    window.scrollBy(x, y);
                 }
+
+                // if (e.key === "ArrowDown") {
+                //     e.preventDefault();
+
+                //     console.log(message.px);
+                //     window.scrollBy(0, message.px);
+                // }
             }, { signal: window.controller.signal });
         }
 
