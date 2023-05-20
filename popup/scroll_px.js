@@ -1,7 +1,15 @@
 // default 2px.
 const DEFAULT_PX = 2;
 
+setPopupBackColor();
 initialize();
+
+// set the popup window background color to the theme frame color.
+async function setPopupBackColor() {
+    const theme_info = await browser.theme.getCurrent();
+
+    document.body.style.backgroundColor = theme_info.colors.popup;
+}
 
 // initialize the popup window.
 // load data from the locally storage to the popup window.
